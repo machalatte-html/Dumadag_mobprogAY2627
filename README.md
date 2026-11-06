@@ -2,4 +2,4 @@
 # INF241
 # 2024-1003331
 
-Laboratory 0: Discussion
+Laboratory 0: Discussion Sample
