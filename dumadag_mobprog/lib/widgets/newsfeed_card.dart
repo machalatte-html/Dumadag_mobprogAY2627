@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
 import 'custom_text.dart';
@@ -30,10 +30,11 @@ class NewsFeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.person),
-                SizedBox(
-                  width: ScreenUtil().setWidth(10),
-                ),
+              CircleAvatar(
+                radius: 20,
+                backgroundImage: AssetImage('assets/images/denzel.jpg'),
+              ),
+              const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -75,39 +76,43 @@ class NewsFeedCard extends StatelessWidget {
               color: Colors.black,
             ),
             SizedBox(height: ScreenUtil().setHeight(5)),
-            hasImage == true
-                ? const Placeholder()
-                : SizedBox(
-                    height: ScreenUtil().setHeight(1),
-                  ),
+            if (hasImage)
+                Image.asset(
+                  'assets/images/owl.jpg',
+                  width: double.infinity,
+                  height: ScreenUtil().setHeight(300),
+                  fit: BoxFit.cover,
+                ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton.icon(
-                  onPressed: () {
-                    print('Liked');
-                  },
-                  icon: const Icon(
-                    Icons.thumb_up,
-                    color: FB_DARK_PRIMARY,
-                  ),
-                  label: CustomText(
-                    text: numOfLikes.toString(),
-                    fontSize: ScreenUtil().setSp(12),
-                    color: FB_DARK_PRIMARY,
-                  ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.thumb_up,
+                      color: FB_DARK_PRIMARY,
+                    ),
+                    SizedBox(width: ScreenUtil().setWidth(5)),
+                    CustomText(
+                      text: numOfLikes.toString(),
+                      fontSize: ScreenUtil().setSp(12),
+                      color: FB_DARK_PRIMARY,
+                    ),
+                  ],
                 ),
-                TextButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.comment,
-                    color: FB_DARK_PRIMARY,
-                  ),
-                  label: CustomText(
-                    text: 'Comment',
-                    fontSize: ScreenUtil().setSp(12),
-                    color: FB_DARK_PRIMARY,
-                  ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.comment,
+                      color: FB_DARK_PRIMARY,
+                    ),
+                    SizedBox(width: ScreenUtil().setWidth(5)),
+                    CustomText(
+                      text: 'Comment',
+                      fontSize: ScreenUtil().setSp(12),
+                      color: FB_DARK_PRIMARY,
+                    ),
+                  ],
                 ),
                 TextButton.icon(
                   onPressed: () {},
