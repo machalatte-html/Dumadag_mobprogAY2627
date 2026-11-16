@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../widgets/newsfeed_card.dart';
 
 class NewsFeedScreen extends StatelessWidget {
@@ -11,15 +11,15 @@ class NewsFeedScreen extends StatelessWidget {
         NewsFeedCard(
           userName: 'Denzel Dumadag',
           postContent: 'Kamusta Ka Na??',
-          numOfLikes: 100,
-          date: 'October 11',
+          numOfLikes: 1,
+          date: 'November 15',
         ),
         NewsFeedCard(
-          userName: 'Roben Juanatas',
-          postContent: 'Kicking off the holiday season with ICpEP-NCR!',
-          numOfLikes: 200,
+          userName: 'Denzel Dumadag',
+          postContent: 'Duolingo in the wild!',
+          numOfLikes: 500,
           hasImage: true,
-          date: 'December 2',
+          date: 'October 11',
         ),
       ],
     );
