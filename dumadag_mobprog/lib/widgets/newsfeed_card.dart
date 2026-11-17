@@ -1,3 +1,4 @@
+
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
@@ -9,6 +10,9 @@ class NewsFeedCard extends StatelessWidget {
   final String date;
   final int numOfLikes;
   final bool hasImage;
+  final String profileImage;
+  final String commentProfileImage;
+
   const NewsFeedCard({
     super.key,
     required this.userName,
@@ -16,6 +20,8 @@ class NewsFeedCard extends StatelessWidget {
     this.numOfLikes = 0,
     this.hasImage = false,
     required this.date,
+    required this.profileImage,
+    required this.commentProfileImage,
   });
 
   @override
@@ -30,11 +36,11 @@ class NewsFeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-              CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/images/denzel.jpg'),
-              ),
-              const SizedBox(width: 10),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(profileImage),
+                ),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -77,12 +83,12 @@ class NewsFeedCard extends StatelessWidget {
             ),
             SizedBox(height: ScreenUtil().setHeight(5)),
             if (hasImage)
-                Image.asset(
-                  'assets/images/owl.jpg',
-                  width: double.infinity,
-                  height: ScreenUtil().setHeight(300),
-                  fit: BoxFit.cover,
-                ),
+              Image.asset(
+                'assets/images/owl.jpg',
+                width: double.infinity,
+                height: ScreenUtil().setHeight(300),
+                fit: BoxFit.cover,
+              ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -130,12 +136,17 @@ class NewsFeedCard extends StatelessWidget {
             ),
             Row(
               children: [
-                Icon(Icons.person),
+                CircleAvatar(
+                  radius: 18,
+                  backgroundImage: AssetImage(commentProfileImage),
+                ),
                 SizedBox(
-                  width: ScreenUtil().setWidth(10),
+                  width: ScreenUtil().setWidth(6),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(ScreenUtil().setSp(10), 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(
+                    ScreenUtil().setSp(10), 0, 0, 0,
+                  ),
                   alignment: Alignment.centerLeft,
                   height: ScreenUtil().setHeight(25),
                   width: ScreenUtil().setWidth(330),
