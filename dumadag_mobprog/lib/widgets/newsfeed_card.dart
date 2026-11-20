@@ -92,7 +92,6 @@ class NewsFeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // LIKE WIDGET
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {},
@@ -120,8 +119,6 @@ class NewsFeedCard extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // COMMENT WIDGET
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {},
@@ -148,8 +145,6 @@ class NewsFeedCard extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // SHARE WIDGET (UNCHANGED)
                 TextButton.icon(
                   onPressed: () {},
                   icon: const Icon(
@@ -164,7 +159,6 @@ class NewsFeedCard extends StatelessWidget {
                 ),
               ],
             ),
-
             Row(
               children: [
                 CircleAvatar(
