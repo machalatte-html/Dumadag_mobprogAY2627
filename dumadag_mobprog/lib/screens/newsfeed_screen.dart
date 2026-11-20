@@ -10,19 +10,22 @@ class NewsFeedScreen extends StatelessWidget {
       children: const [
         NewsFeedCard(
           userName: 'Denzel Dumadag',
-          postContent: 'Kamusta Ka Na??',
-          numOfLikes: 100,
-          date: 'October 11',
+          profileImage: 'assets/images/denzel.jpg',
+          commentProfileImage: 'assets/images/denzel.jpg',
+          postContent: 'Bakit pula ang tawag sa dilaw ng itlog??',
+          numOfLikes: 1,
+          date: 'November 15',
         ),
         NewsFeedCard(
-          userName: 'Roben Juanatas',
-          postContent: 'Kicking off the holiday season with ICpEP-NCR!',
-          numOfLikes: 200,
+          userName: 'National Geographic',
+          profileImage: 'assets/images/natgeo.jpg',
+          commentProfileImage: 'assets/images/natgeo.jpg',
+          postContent: 'Duolingo in the wild!',
+          numOfLikes: 500,
           hasImage: true,
-          date: 'December 2',
+          date: 'October 11',
         ),
       ],
     );
   }
 }
-
