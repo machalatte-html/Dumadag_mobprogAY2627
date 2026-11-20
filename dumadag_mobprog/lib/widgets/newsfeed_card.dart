@@ -1,9 +1,9 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
 import 'custom_text.dart';
 
-class NewsFeedCard extends StatelessWidget {
+class NewsFeedCard extends StatefulWidget {
   final String userName;
   final String postContent;
   final String date;
@@ -24,6 +24,20 @@ class NewsFeedCard extends StatelessWidget {
   });
 
   @override
+  State<NewsFeedCard> createState() => _NewsFeedCardState();
+}
+
+class _NewsFeedCardState extends State<NewsFeedCard> {
+  late int likes;
+  bool isLiked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    likes = widget.numOfLikes;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(ScreenUtil().setSp(10)),
@@ -37,14 +51,14 @@ class NewsFeedCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage(profileImage),
+                  backgroundImage: AssetImage(widget.profileImage),
                 ),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText(
-                      text: userName,
+                      text: widget.userName,
                       fontSize: ScreenUtil().setSp(15),
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -54,7 +68,7 @@ class NewsFeedCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: date,
+                          text: widget.date,
                           fontSize: ScreenUtil().setSp(12),
                           color: Colors.grey,
                         ),
@@ -74,44 +88,76 @@ class NewsFeedCard extends StatelessWidget {
                 Icon(Icons.more_horiz),
               ],
             ),
+
             SizedBox(height: ScreenUtil().setHeight(5)),
+
             CustomText(
-              text: postContent,
+              text: widget.postContent,
               fontSize: ScreenUtil().setSp(12),
               color: Colors.black,
             ),
+
             SizedBox(height: ScreenUtil().setHeight(5)),
-            if (hasImage)
+
+            if (widget.hasImage)
               Image.asset(
                 'assets/images/owl.jpg',
                 width: double.infinity,
                 height: ScreenUtil().setHeight(300),
                 fit: BoxFit.cover,
               ),
+
+            // LIKE, COMMENT AND SHARE
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.thumb_up,
-                      color: FB_DARK_PRIMARY,
+                // LIKE WIDGET WITH INTERACTION
+                InkWell(
+                  borderRadius: BorderRadius.circular(20),
+                  onTap: () {
+                    setState(() {
+                      isLiked = !isLiked;
+                      likes += isLiked ? 1 : -1;
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 8,
                     ),
-                    SizedBox(width: ScreenUtil().setWidth(5)),
-                    CustomText(
-                      text: numOfLikes.toString(),
-                      fontSize: ScreenUtil().setSp(12),
-                      color: FB_DARK_PRIMARY,
+                    child: Row(
+                      children: [
+                        Icon(
+                          isLiked
+                              ? Icons.thumb_up
+                              : Icons.thumb_up_outlined,
+                          color: isLiked
+                              ? Colors.blue
+                              : FB_DARK_PRIMARY,
+                        ),
+                        SizedBox(
+                          width: ScreenUtil().setWidth(5),
+                        ),
+                        CustomText(
+                          text: likes.toString(),
+                          fontSize: ScreenUtil().setSp(12),
+                          color: FB_DARK_PRIMARY,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
+
+                // COMMENT
                 Row(
                   children: [
                     const Icon(
                       Icons.comment,
                       color: FB_DARK_PRIMARY,
                     ),
-                    SizedBox(width: ScreenUtil().setWidth(5)),
+                    SizedBox(
+                      width: ScreenUtil().setWidth(5),
+                    ),
                     CustomText(
                       text: 'Comment',
                       fontSize: ScreenUtil().setSp(12),
@@ -119,6 +165,8 @@ class NewsFeedCard extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                // SHARE
                 TextButton.icon(
                   onPressed: () {},
                   icon: const Icon(
@@ -133,11 +181,15 @@ class NewsFeedCard extends StatelessWidget {
                 ),
               ],
             ),
+
+            // ORIGINAL COMMENT SECTION
             Row(
               children: [
                 CircleAvatar(
                   radius: 18,
-                  backgroundImage: AssetImage(commentProfileImage),
+                  backgroundImage: AssetImage(
+                    widget.commentProfileImage,
+                  ),
                 ),
                 SizedBox(
                   width: ScreenUtil().setWidth(6),
@@ -163,9 +215,11 @@ class NewsFeedCard extends StatelessWidget {
                 ),
               ],
             ),
+
             SizedBox(
               height: ScreenUtil().setHeight(10),
             ),
+
             CustomText(
               text: 'View comments',
               fontSize: ScreenUtil().setSp(12),
