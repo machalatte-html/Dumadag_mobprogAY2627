@@ -1,4 +1,4 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import '../widgets/newsfeed_card.dart';
 
 class NewsFeedScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class NewsFeedScreen extends StatelessWidget {
           userName: 'Denzel Dumadag',
           profileImage: 'assets/images/denzel.jpg',
           commentProfileImage: 'assets/images/denzel.jpg',
-          postContent: 'Kamusta Ka Na??',
+          postContent: 'Bakit pula ang tawag sa dilaw ng itlog??',
           numOfLikes: 1,
           date: 'November 15',
         ),
