@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '/screens/home_screen.dart';
 import '/screens/newsfeed_screen.dart';
+import '/screens/notification_screen.dart';
 
 void main() => runApp(const RoblesFacebook());
 
@@ -22,6 +23,7 @@ class RoblesFacebook extends StatelessWidget {
           routes: {
             '/newsfeed': (context) => const NewsFeedScreen(),
             '/home': (context) => const HomeScreen(),
+            '/notification': (context) => const NotificationScreen(),
           },
         );
       },

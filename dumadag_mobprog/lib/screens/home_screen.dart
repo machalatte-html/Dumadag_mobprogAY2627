@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants.dart';
 import '../screens/newsfeed_screen.dart';
 import '../widgets/custom_text.dart';
+import '../screens/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         shadowColor: FB_TEXT_COLOR_WHITE,
         elevation: 2,
         title: CustomText(
-          text: 'facebook',
+          text: _selectedIndex == 1 ? 'Notifications' : 'BreakingBad',   
           fontSize: ScreenUtil().setSp(25),
           color: FB_PRIMARY,
           fontFamily: 'Klavika',
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: PageView(
         controller: _pageController,
-        children: const <Widget>[NewsFeedScreen()],
+        children: const <Widget>[NewsFeedScreen(), NotificationScreen()],
         onPageChanged: (page) {
           setState(() {
             _selectedIndex = page;
@@ -43,10 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onTappedBar,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications),label: 'Notifications'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         selectedItemColor: FB_PRIMARY,
         currentIndex: _selectedIndex,
