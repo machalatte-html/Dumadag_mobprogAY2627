@@ -11,6 +11,7 @@ class NewsFeedCard extends StatelessWidget {
   final bool hasImage;
   final String profileImage;
   final String commentProfileImage;
+  final String imageAsset;
 
   const NewsFeedCard({
     super.key,
@@ -18,6 +19,7 @@ class NewsFeedCard extends StatelessWidget {
     required this.postContent,
     this.numOfLikes = 0,
     this.hasImage = false,
+    this.imageAsset = 'assets/images/owl.jpg',
     required this.date,
     required this.profileImage,
     required this.commentProfileImage,
@@ -58,9 +60,7 @@ class NewsFeedCard extends StatelessWidget {
                           fontSize: ScreenUtil().setSp(12),
                           color: Colors.grey,
                         ),
-                        SizedBox(
-                          width: ScreenUtil().setWidth(3),
-                        ),
+                        SizedBox(width: ScreenUtil().setWidth(3)),
                         Icon(
                           Icons.public,
                           color: Colors.grey,
@@ -83,12 +83,12 @@ class NewsFeedCard extends StatelessWidget {
             SizedBox(height: ScreenUtil().setHeight(5)),
             if (hasImage)
               Image.asset(
-                'assets/images/owl.jpg',
+                imageAsset,
                 width: double.infinity,
                 height: ScreenUtil().setHeight(300),
                 fit: BoxFit.cover,
               ),
-            
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -107,9 +107,7 @@ class NewsFeedCard extends StatelessWidget {
                           color: FB_DARK_PRIMARY,
                         ),
 
-                        SizedBox(
-                          width: ScreenUtil().setWidth(5),
-                        ),
+                        SizedBox(width: ScreenUtil().setWidth(5)),
                         CustomText(
                           text: numOfLikes.toString(),
                           fontSize: ScreenUtil().setSp(12),
@@ -133,9 +131,7 @@ class NewsFeedCard extends StatelessWidget {
                           Icons.comment_outlined,
                           color: FB_DARK_PRIMARY,
                         ),
-                        SizedBox(
-                          width: ScreenUtil().setWidth(5),
-                        ),
+                        SizedBox(width: ScreenUtil().setWidth(5)),
                         CustomText(
                           text: 'Comment',
                           fontSize: ScreenUtil().setSp(12),
@@ -147,10 +143,7 @@ class NewsFeedCard extends StatelessWidget {
                 ),
                 TextButton.icon(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.redo,
-                    color: FB_DARK_PRIMARY,
-                  ),
+                  icon: const Icon(Icons.redo, color: FB_DARK_PRIMARY),
                   label: CustomText(
                     text: 'Share',
                     fontSize: ScreenUtil().setSp(12),
@@ -165,13 +158,9 @@ class NewsFeedCard extends StatelessWidget {
                   radius: 18,
                   backgroundImage: AssetImage(commentProfileImage),
                 ),
-                SizedBox(
-                  width: ScreenUtil().setWidth(6),
-                ),
+                SizedBox(width: ScreenUtil().setWidth(6)),
                 Container(
-                  padding: EdgeInsets.fromLTRB(
-                    ScreenUtil().setSp(10), 0, 0, 0,
-                  ),
+                  padding: EdgeInsets.fromLTRB(ScreenUtil().setSp(10), 0, 0, 0),
                   alignment: Alignment.centerLeft,
                   height: ScreenUtil().setHeight(25),
                   width: ScreenUtil().setWidth(330),
@@ -189,9 +178,7 @@ class NewsFeedCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: ScreenUtil().setHeight(10),
-            ),
+            SizedBox(height: ScreenUtil().setHeight(10)),
             CustomText(
               text: 'View comments',
               fontSize: ScreenUtil().setSp(12),
